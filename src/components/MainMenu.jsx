@@ -32,7 +32,9 @@ export default function MainMenu() {
 			<AppBar position="static">
 				<Toolbar>
 					<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-						<Image src="/geri.png" alt="Logo" width={40} height={40} />
+						<Link href="/dashboard">
+							<Image src="/geri.png" alt="Logo" width={40} height={40} />
+						</Link>
 					</Typography>
 					<IconButton edge="end" color="primary" onClick={toggleDrawer}>
 						<MenuIcon />
@@ -41,7 +43,7 @@ export default function MainMenu() {
 			</AppBar>
 			<Drawer anchor="right" open={open} onClose={toggleDrawer}>
 				<List>
-					<Link href="/dashboard" >
+					<Link href="/dashboard">
 						<ListItem button>
 							<ListItemIcon>
 								<HomeIcon />
@@ -66,12 +68,15 @@ export default function MainMenu() {
 						</ListItem>
 					</Link>
 					<Link href="/">
-						<ListItem button onClick={() => {
-							localStorage.removeItem("authentication_token");
-							localStorage.removeItem("email");
-							localStorage.removeItem("name");
-							localStorage.removeItem("unit_id");
-						}}>
+						<ListItem
+							button
+							onClick={() => {
+								localStorage.removeItem("authentication_token");
+								localStorage.removeItem("email");
+								localStorage.removeItem("name");
+								localStorage.removeItem("unit_id");
+							}}
+						>
 							<ListItemIcon>
 								<ExitIcon />
 							</ListItemIcon>

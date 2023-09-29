@@ -13,6 +13,10 @@ export default function FormDialog() {
 	const [open, setOpen] = useState(false);
 	const [message, setMessage] = useState("");
 	const [severity, setSeverity] = useState("");
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [messageText, setMessageText] = useState("");
+
 	const serviceId = "service_866m4dz";
 	const templateId = "template_guxh768";
 	const userId = "IPjhIUVeygJvsyWBU";
@@ -29,33 +33,36 @@ export default function FormDialog() {
 	const handleCloseAlert = () => {
 		setMessage("");
 	};
-  
+
 	const sendEmail = (e) => {
 		e.preventDefault();
 
-		const nameField = form.current.querySelector("#name");
-		const emailField = form.current.querySelector("#email");
-		const messageField = form.current.querySelector("#message");
+		if (name.trim() === "" || email.trim() === "" || messageText.trim() === "") {
+			setMessage("Preencha todos os campos!");
+			setSeverity("warning");
+			return;
+		}
 
-		if (nameField.value.split(" ").length < 2) {
+		if (name.split(" ").length < 2) {
 			setMessage("Digite o Nome Completo!");
 			setSeverity("warning");
 			return;
 		}
 
-		if (!emailField.value.match(/^\S+@\S+\.\S+$/)) {
+		if (!email.match(/^\S+@\S+\.\S+$/)) {
 			setMessage("Digite um email válido!");
 			setSeverity("warning");
 			return;
 		}
 
-		if (nameField.value.trim() === "" || emailField.value.trim() === "" || messageField.value.trim() === "") {
-			setMessage("Preencha todos os campos!");
-			setSeverity("warning");
-			return;
-		}
-  
-		emailjs.sendForm(serviceId, templateId, form.current, userId)
+		const emailParams = {
+			from_name: name,
+			from_email: email,
+			message: messageText,
+		};
+
+		emailjs
+			.send(serviceId, templateId, emailParams, userId)
 			.then((result) => {
 				console.log(result);
 				setMessage("Cadastro enviado com sucesso!");
@@ -91,6 +98,8 @@ export default function FormDialog() {
 							placeholder="Nome Completo"
 							fullWidth
 							sx={{ marginTop: "20px" }}
+							value={name}
+							onChange={(e) => setName(e.target.value)}
 						/>
 						<TextField
 							required
@@ -100,6 +109,8 @@ export default function FormDialog() {
 							placeholder="seu@email.com"
 							fullWidth
 							sx={{ marginTop: "20px" }}
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
 						/>
 						<TextField
 							required
@@ -109,12 +120,16 @@ export default function FormDialog() {
 							placeholder="Digite sua mensagem aqui..."
 							fullWidth
 							sx={{ marginTop: "20px" }}
+							value={messageText}
+							onChange={(e) => setMessageText(e.target.value)}
 						/>
 					</form>
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleClose}>CANCELAR</Button>
-					<Button variant="outlined" onClick={sendEmail}>ENVIAR</Button>
+					<Button variant="outlined" onClick={sendEmail}>
+            ENVIAR
+					</Button>
 				</DialogActions>
 			</Dialog>
 		</div>

@@ -30,7 +30,6 @@ export default function LoginGoogle() {
 					text="signin"
 					locale="pt-BR"
 					onSuccess={credentialResponse => {
-						console.log("Credencial:", 	credentialResponse);
 						setMessage("Login feito com sucesso!");
 						setSeverity("success");
         
@@ -45,7 +44,6 @@ export default function LoginGoogle() {
 									setMessage(data.error);
 									setSeverity("error");
 								} else {
-									console.log("Dados do usuário:", data);
 									localStorage.setItem("authentication_token", data.authentication_token);
 									localStorage.setItem("email", data.email);
 									localStorage.setItem("name", data.name);

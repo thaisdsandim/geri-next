@@ -84,40 +84,31 @@ export default function FormDialog() {
 					</DialogContentText>
 					<form ref={form}>
 						<TextField
-							autoFocus
 							required
-							margin="dense"
-							id="name"
 							name="from_name"
 							label="Nome Completo"
 							type="name"
 							placeholder="Nome Completo"
 							fullWidth
-							variant="standard"
+							sx={{ marginTop: "20px" }}
 						/>
 						<TextField
-							autoFocus
 							required
-							margin="dense"
-							id="email"
 							name="from_email"
 							label="Email"
 							type="email"
 							placeholder="seu@email.com"
 							fullWidth
-							variant="standard"
+							sx={{ marginTop: "20px" }}
 						/>
 						<TextField
-							autoFocus
 							required
-							margin="dense"
-							id="message"
 							name="message"
 							label="Mensagem"
 							type="message"
 							placeholder="Digite sua mensagem aqui..."
 							fullWidth
-							variant="standard"
+							sx={{ marginTop: "20px" }}
 						/>
 					</form>
 				</DialogContent>

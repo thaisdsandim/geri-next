@@ -1,6 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 "use client";
 
+import ClientsList from "@/components/clients/ClientsList";
 import MainMenu from "@/components/MainMenu";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
@@ -23,6 +24,7 @@ export default function Clients() {
 		<ThemeProvider theme={darkTheme}>
 			<main className="min-h-screen">
 				<MainMenu />
+				<ClientsList />
 			</main>
 		</ThemeProvider>
 	);

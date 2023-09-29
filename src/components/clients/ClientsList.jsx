@@ -62,7 +62,7 @@ export default function ClientsList() {
 	});
 
 	return (
-		<div className="gap-4 my-4 ml-4 mr-2">
+		<div className="gap-4 mt-4 ml-4 mr-2">
 			<TextField
 				id="search"
 				label="Pesquisar cliente"
@@ -72,10 +72,10 @@ export default function ClientsList() {
 				className="w-full mb-4"
 				placeholder="Digite o nome ou o telefone do cliente..."
 			/>
-			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-2">
+			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 				<AlertMessage message={message} severity={severity} onClose={handleCloseAlert} />
 				{sortedCustomers.map((customer) => (
-					<Card key={customer.id} sx={{ minWidth: 200 }} className="mx-2 mb-2 mt-2">
+					<Card key={customer.id} sx={{ minWidth: 200 }} className="mx-2 mb-2 mt-4">
 						<CardContent>
 							<Typography variant="h5">{customer.name}</Typography>
 							<Typography color="text.secondary">{customer.phone}</Typography>

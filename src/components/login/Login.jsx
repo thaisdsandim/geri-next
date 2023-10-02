@@ -5,9 +5,9 @@ import LoginGoogle from "./LoginGoogle";
 export default function Login() {
 	useEffect(() => {
 		const authenticationToken = localStorage.getItem("authentication_token");
-		const email = localStorage.getItem("email");
+		const unitId = localStorage.getItem("unit_id");
 
-		if (authenticationToken && email) {
+		if (authenticationToken && unitId) {
 			window.location.href = "/dashboard";
 		}
 	}, []);

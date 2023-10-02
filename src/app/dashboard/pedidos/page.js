@@ -1,6 +1,6 @@
-/* eslint-disable react/react-in-jsx-scope */
 "use client";
 
+import { React, useEffect } from "react";
 import MainMenu from "@/components/MainMenu";
 import OrdersList from "@/components/orders/OrdersList";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -20,6 +20,15 @@ const darkTheme = createTheme({
 });
 
 export default function Orders() {
+	useEffect(() => {
+		const authenticationToken = localStorage.getItem("authentication_token");
+		const unitId = localStorage.getItem("unit_id");
+	
+		if (!authenticationToken || !unitId) {
+			window.location.href = "/";
+		}
+	}, []);
+
 	return (
 		<ThemeProvider theme={darkTheme}>
 			<main className="min-h-screen">

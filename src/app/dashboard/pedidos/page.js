@@ -2,7 +2,7 @@
 "use client";
 
 import MainMenu from "@/components/MainMenu";
-import UnderDevelopment from "@/components/UnderDevelopment";
+import OrdersList from "@/components/orders/OrdersList";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const darkTheme = createTheme({
@@ -24,7 +24,7 @@ export default function Orders() {
 		<ThemeProvider theme={darkTheme}>
 			<main className="min-h-screen">
 				<MainMenu />
-				<UnderDevelopment />
+				<OrdersList />
 			</main>
 		</ThemeProvider>
 	);

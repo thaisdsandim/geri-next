@@ -18,7 +18,8 @@
     "axios": "^1.5.1",
     "next": "^13.3.4",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-is": "^18.2.0"
   },
   "devDependencies": {
     "autoprefixer": "latest",

@@ -109,8 +109,8 @@ export default function ClientsCreate() {
 					/>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => setOpen(false)}>Cancelar</Button>
-					<Button onClick={handleSave} color="primary">
+					<Button variant="outlined" onClick={() => setOpen(false)}>Cancelar</Button>
+					<Button variant="contained" onClick={handleSave}>
             Salvar
 					</Button>
 				</DialogActions>

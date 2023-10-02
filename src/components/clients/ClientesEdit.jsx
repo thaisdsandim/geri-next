@@ -68,7 +68,7 @@ export default function CustomerEdit({ customerId, customerName, customerPhone }
 	return (
 		<div>
 			<AlertMessage message={message} severity={severity} onClose={handleCloseAlert} />
-			<Button size="small" onClick={() => setOpen(true)}>
+			<Button variant="outlined" onClick={() => setOpen(true)}>
         Editar
 			</Button>
 			<Dialog open={open} onClose={() => setOpen(false)}>
@@ -92,8 +92,8 @@ export default function CustomerEdit({ customerId, customerName, customerPhone }
 					/>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => setOpen(false)}>Cancelar</Button>
-					<Button onClick={handleSave} color="primary">
+					<Button variant="outlined" onClick={() => setOpen(false)}>Cancelar</Button>
+					<Button variant="contained" onClick={handleSave} color="primary">
             Salvar
 					</Button>
 				</DialogActions>

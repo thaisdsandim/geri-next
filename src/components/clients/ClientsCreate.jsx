@@ -5,6 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
+import Tooltip from "@mui/material/Tooltip";
 import axios from "axios";
 import URL from "@/utils/apiConfig";
 import AlertMessage from "../Alert";
@@ -83,9 +84,11 @@ export default function ClientsCreate() {
 		<div>
 			<AlertMessage message={message} severity={severity} onClose={handleCloseAlert} />
 			<div style={{ position: "fixed", bottom: "20px", right: "20px" }}>
-				<Button variant="text" color="primary" onClick={() => setOpen(true)}>
-					<AddIcon style={{ fontSize: 50 }} />
-				</Button>
+				<Tooltip title="Cadastrar">
+					<Button variant="text" color="primary" onClick={() => setOpen(true)}>
+						<AddIcon style={{ fontSize: 50 }} />
+					</Button>
+				</Tooltip>
 			</div>
 			<Dialog open={open} onClose={() => setOpen(false)}>
 				<DialogTitle>Cadastrar Cliente</DialogTitle>

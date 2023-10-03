@@ -57,11 +57,15 @@ export default function CustomerEdit({ customerId, customerName, customerPhone }
 			.put(`${URL}/units/${unitId}/costumers/${customerId}`, updatedCustomer, {headers})
 			.then(response => {
 				console.log(response);
+				setMessage("Cliente editado com sucesso!");
+				setSeverity("sucess");
 				setOpen(false);
 				window.location.reload();
 			})
 			.catch(error => {
-				console.error(error);
+				console.log(error);
+				setMessage("Erro ao editar cliente!");
+				setSeverity("error");
 			});
 	};
 

@@ -86,10 +86,10 @@ export default function ClientsList() {
 								customerName={customer.name}
 								customerPhone={customer.phone}
 							/>
-							<ClientsCreate />
 						</CardActions>
 					</Card>
 				))}
+				<ClientsCreate />
 			</div>
 		</div>
 	);

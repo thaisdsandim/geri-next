@@ -15,7 +15,8 @@ import {
 	HomeOutlined as HomeIcon,
 	ReceiptOutlined as ReceiptIcon,
 	PeopleOutlined as PeopleIcon,
-	ExitToAppOutlined as ExitIcon
+	ExitToAppOutlined as ExitIcon,
+	MenuBookOutlined as CatalogIcon
 } from "@mui/icons-material";
 import Link from "next/link";
 import Image from "next/image";
@@ -65,6 +66,14 @@ export default function MainMenu() {
 								<PeopleIcon />
 							</ListItemIcon>
 							<ListItemText primary="Clientes" />
+						</ListItem>
+					</Link>
+					<Link href="/dashboard/catalogo">
+						<ListItem button>
+							<ListItemIcon>
+								<CatalogIcon />
+							</ListItemIcon>
+							<ListItemText primary="Catálogo" />
 						</ListItem>
 					</Link>
 					<Link href="/">

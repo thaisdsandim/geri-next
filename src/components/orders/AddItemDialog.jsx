@@ -8,6 +8,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import AlertMessage from "../Alert";
 
 export default function AddItemDialog({ open, onClose, onAddItem }) {
 	const unitId = localStorage.getItem("unit_id");
@@ -17,13 +18,19 @@ export default function AddItemDialog({ open, onClose, onAddItem }) {
 	const [itemType, setItemType] = useState(null);
 	const [itemQuantity, setItemQuantity] = useState(null);
 	const [itemComments, setItemComments] = useState("");
+	const [message, setMessage] = useState("");
+	const [severity, setSeverity] = useState("");
+
+	const handleCloseAlert = () => {
+		setMessage("");
+	};
 
 	const headers = {
 		Authorization: `Bearer ${authenticationToken}`
 	};
 
 	const handleAddItem = () => {
-		if (itemCategory && itemType && itemQuantity && itemComments) {
+		if (itemCategory && itemType && itemQuantity) {
 			const formattedQuantity = parseFloat(itemQuantity).toFixed(3);
 
 			const newItem = {
@@ -39,6 +46,9 @@ export default function AddItemDialog({ open, onClose, onAddItem }) {
 			setItemType(null);
 			setItemQuantity("");
 			setItemComments("");
+		} else {
+			setMessage("Preencha todos os campos obrigatórios!");
+			setSeverity("warning");
 		}
 	};
 
@@ -62,7 +72,9 @@ export default function AddItemDialog({ open, onClose, onAddItem }) {
 	}
 
 	return (
+		
 		<Dialog open={open} onClose={onClose}>
+			<AlertMessage message={message} severity={severity} onClose={handleCloseAlert} />
 			<DialogTitle>Adicionar Item</DialogTitle>
 			<DialogContent>
 				<Autocomplete
@@ -100,7 +112,7 @@ export default function AddItemDialog({ open, onClose, onAddItem }) {
 					margin="normal"
 				/>
 				<TextField
-					label="Observações"
+					label="Observações (opcional)"
 					placeholder="Digite suas observações sobre o item..."
 					value={itemComments}
 					onChange={(e) => setItemComments(e.target.value)}

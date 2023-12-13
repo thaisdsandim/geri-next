@@ -32,6 +32,20 @@ export default function OrdersCreate() {
 		Authorization: `Bearer ${authenticationToken}`,
 	};
 
+	const resetForm = () => {
+		setSelectedCustomer(null);
+		setDeliveryPlace("");
+		setSelectedDate(null);
+		setSelectedTime("");
+		setOrderAmount(0);
+		setOrderItems([]);
+	};
+
+	const handleClose = () => {
+		resetForm();
+		setOpen(false);
+	};
+
 	const handleOpenAddItemDialog = () => {
 		setAddItemDialogOpen(true);
 	};
@@ -71,13 +85,9 @@ export default function OrdersCreate() {
 	}, []);
 
 	const handleSave = () => {
-		console.log("Cliente selecionado:", selectedCustomer.name);
-		console.log("Local de Entrega:", deliveryPlace);
-		console.log("Data de Entrega:", selectedDate);
-		console.log("Hora e Minuto de Entrega:", selectedTime);
+		resetForm();
+		setOpen(false);
 	};
-
-	console.log(orderItems);
 
 	return (
 		<div>
@@ -88,7 +98,7 @@ export default function OrdersCreate() {
 					</Button>
 				</Tooltip>
 			</div>
-			<Dialog open={open} onClose={() => setOpen(false)}>
+			<Dialog open={open} onClose={handleClose}>
 				<DialogTitle>Cadastrar Pedido</DialogTitle>
 				<DialogContent>
 					<Autocomplete
@@ -147,7 +157,7 @@ export default function OrdersCreate() {
 								<ListItemText 
 									primary={`• ${item.quantity} ${item.category.category === "Bolo" ? "kg" : "un"} de 
 										${item.category.category} sabor ${item.category.flavour} - Valor total: 
-										${formatCurrency(item.category.category === 'Docinhos' ? (item.quantity / 100) * item.category.value : item.quantity * item.category.value)}
+										${formatCurrency(item.category.category === "Docinhos" ? (item.quantity / 100) * item.category.value : item.quantity * item.category.value)}
 									`}
 									secondary={`${item.comments}`}
 								/>
@@ -164,7 +174,7 @@ export default function OrdersCreate() {
 					/>
 				</DialogContent>
 				<DialogActions>
-					<Button variant="outlined" onClick={() => setOpen(false)}>
+					<Button variant="outlined" onClick={handleClose}>
             Cancelar
 					</Button>
 					<Button variant="contained" onClick={handleSave}>

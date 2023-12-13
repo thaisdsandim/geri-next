@@ -14,6 +14,7 @@ import { AddCircleOutlined as AddIcon } from "@mui/icons-material";
 import axios from "axios";
 import URL from "@/utils/apiConfig";
 import AddItemDialog from "./AddItemDialog";
+import AlertMessage from "../Alert";
 
 export default function OrdersCreate() {
 	const [open, setOpen] = useState(false);
@@ -27,6 +28,12 @@ export default function OrdersCreate() {
 	const [orderItems, setOrderItems] = useState([]);
 	const unitId = localStorage.getItem("unit_id");
 	const authenticationToken = localStorage.getItem("authentication_token");
+	const [message, setMessage] = useState("");
+	const [severity, setSeverity] = useState("");
+
+	const handleCloseAlert = () => {
+		setMessage("");
+	};
 
 	const headers = {
 		Authorization: `Bearer ${authenticationToken}`,
@@ -80,14 +87,73 @@ export default function OrdersCreate() {
 				setCustomers(response.data);
 			})
 			.catch((error) => {
-				console.error(error);
+				setMessage("Erro ao carregar os clientes!");
+				setSeverity("error");
 			});
 	}, []);
 
 	const handleSave = () => {
-		resetForm();
-		setOpen(false);
-	};
+		if (!selectedCustomer) {
+			setMessage("Selecione o cliente!");
+			setSeverity("warning");
+			return;
+		}
+
+		if (!selectedDate) {
+			setMessage("Selecione a data de entrega!");
+			setSeverity("warning");
+			return;
+		}
+
+		if (orderItems.length === 0) {
+			setMessage("Preencha pelo menos 1 item!");
+			setSeverity("warning");
+			return;
+		}
+
+		const orderData = {
+			delivery_date: selectedDate,
+			delivery_hour: selectedTime,
+			delivery_place: deliveryPlace,
+			amount: orderAmount,
+			costumer_id: selectedCustomer.id,
+			unit_id: unitId,
+		};
+
+		axios
+			.post(`${URL}/units/${unitId}/orders`, orderData, { headers })
+			.then((response) => {
+				const orderId = response.data.id;
+
+				orderItems.forEach((item) => {
+					const itemData = {
+						category: item.category.category,
+						flavour: item.category.flavour,
+						comments: item.comments,
+						quantity: item.quantity,
+						amount: item.category.category === "Docinhos" ? (item.quantity / 100) * item.category.value : item.quantity * item.category.value,
+						order_id: orderId,
+					};
+	
+					axios
+						.post(`${URL}/units/${unitId}/orders/${orderId}/items`, itemData, { headers })
+						.then((itemResponse) => {
+						})
+						.catch((itemError) => {
+							setMessage("Erro ao criar o item!");
+							setSeverity("error");
+						});
+				});
+				setMessage("Pedido criado com sucesso!");
+				setSeverity("success");
+				resetForm();
+				setOpen(false);
+			})
+			.catch((error) => {
+				setMessage("Erro ao criar o pedido!");
+				setSeverity("error");
+			});
+	};	
 
 	return (
 		<div>
@@ -99,6 +165,7 @@ export default function OrdersCreate() {
 				</Tooltip>
 			</div>
 			<Dialog open={open} onClose={handleClose}>
+				<AlertMessage message={message} severity={severity} onClose={handleCloseAlert} />
 				<DialogTitle>Cadastrar Pedido</DialogTitle>
 				<DialogContent>
 					<Autocomplete

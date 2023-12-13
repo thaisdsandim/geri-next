@@ -59,7 +59,8 @@ export default function AddItemDialog({ open, onClose, onAddItem }) {
 				setCatalog(response.data);
 			})
 			.catch((error) => {
-				console.error(error);
+				setMessage("Erro ao carregar os produtos!");
+				setSeverity("error");
 			});
 	}, []);
 

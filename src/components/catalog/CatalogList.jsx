@@ -72,7 +72,7 @@ export default function CatalogList() {
 					<TableHead>
 						<TableRow>
 							<TableCell>Categoria</TableCell>
-							<TableCell>Sabor</TableCell>
+							<TableCell>Tipo</TableCell>
 							<TableCell>Valor</TableCell>
 							<TableCell>Ações</TableCell>
 						</TableRow>

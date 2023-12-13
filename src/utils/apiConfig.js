@@ -1,3 +1,3 @@
-const URL = "http://127.0.0.1:3000";
+const URL = "https://geri-api-617654794a59.herokuapp.com";
 
 export default URL;

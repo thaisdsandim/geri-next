@@ -4,6 +4,7 @@ import axios from "axios";
 import URL from "@/utils/apiConfig";
 import OrderView from "./OrderView";
 import AlertMessage from "../Alert";
+import OrdersCreate from "./OrdersCreate";
 
 export default function OrdersList() {
 	const [data, setData] = useState([]);
@@ -94,6 +95,7 @@ export default function OrdersList() {
 					</Card>
 				))}
 			</div>
+			<OrdersCreate />
 		</div>
 	);
 }

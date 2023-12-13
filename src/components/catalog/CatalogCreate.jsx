@@ -127,9 +127,9 @@ export default function CatalogCreate() {
 					</FormControl>
 					<TextField
 						required
-						label="Sabor"
+						label="Tipo"
 						onChange={(e) => setFlavour(e.target.value)}
-						placeholder="Digite o sabor do produto..."
+						placeholder="Digite o tipo do produto..."
 						fullWidth
 						sx={{ marginTop: "10px" }}
 					/>

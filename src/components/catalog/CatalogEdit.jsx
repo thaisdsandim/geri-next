@@ -104,10 +104,10 @@ export default function CatalogEdit({ itemId, itemCategory, itemFlavour, itemVal
 						</Select>
 					</FormControl>
 					<TextField
-						label="Sabor"
+						label="Tipo"
 						value={flavour}
 						onChange={(e) => setFlavour(e.target.value)}
-						placeholder="Sabor"
+						placeholder="Tipo"
 						fullWidth
 						sx={{ marginTop: "20px" }}
 					/>

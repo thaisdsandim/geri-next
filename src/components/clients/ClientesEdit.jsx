@@ -13,8 +13,8 @@ export default function CustomerEdit({ customerId, customerName, customerPhone }
 	const [open, setOpen] = useState(false);
 	const [name, setName] = useState(customerName);
 	const [phone, setPhone] = useState(customerPhone);
-	const unitId = localStorage.getItem("unit_id");
-	const authenticationToken = localStorage.getItem("authentication_token");
+	// const unitId = localStorage.getItem("unit_id");
+	// const authenticationToken = localStorage.getItem("authentication_token");
 	const [message, setMessage] = useState("");
 	const [severity, setSeverity] = useState("");
 
@@ -22,9 +22,9 @@ export default function CustomerEdit({ customerId, customerName, customerPhone }
 		setMessage("");
 	};
 
-	const headers = {
-		Authorization: `Bearer ${authenticationToken}`
-	};
+	// const headers = {
+	// 	Authorization: `Bearer ${authenticationToken}`
+	// };
 	
 	const handlePhoneChange = (e) => {
 		const rawPhone = e.target.value;
@@ -53,7 +53,7 @@ export default function CustomerEdit({ customerId, customerName, customerPhone }
 		}
   
 		axios
-			.put(`${URL}/units/${unitId}/costumers/${customerId}`, updatedCustomer, {headers})
+			.put(`${URL}/units/1/costumers/${customerId}`, updatedCustomer)
 			.then(response => {
 				console.log(response);
 				setMessage("Cliente editado com sucesso!");

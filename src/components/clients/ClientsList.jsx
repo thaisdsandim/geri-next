@@ -13,8 +13,8 @@ import ClientsCreate from "./ClientsCreate";
 export default function ClientsList() {
 	const [customers, setCustomers] = useState([]);
 	const [searchTerm, setSearchTerm] = useState("");
-	const unitId = localStorage.getItem("unit_id");
-	const authenticationToken = localStorage.getItem("authentication_token");
+	// const unitId = localStorage.getItem("unit_id");
+	// const authenticationToken = localStorage.getItem("authentication_token");
 	const [message, setMessage] = useState("");
 	const [severity, setSeverity] = useState("");
 
@@ -22,13 +22,13 @@ export default function ClientsList() {
 		setMessage("");
 	};
 
-	const headers = {
-		Authorization: `Bearer ${authenticationToken}`
-	};
+	// const headers = {
+	// 	Authorization: `Bearer ${authenticationToken}`
+	// };
 
 	useEffect(() => {
 		axios
-			.get(`${URL}/units/${unitId}/costumers`, { headers })
+			.get(`${URL}/units/1/costumers`)
 			.then((response) => {
 				setCustomers(response.data);
 			})

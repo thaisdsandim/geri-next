@@ -20,14 +20,14 @@ const darkTheme = createTheme({
 });
 
 export default function Orders() {
-	useEffect(() => {
-		const authenticationToken = localStorage.getItem("authentication_token");
-		const unitId = localStorage.getItem("unit_id");
+	// useEffect(() => {
+	// 	const authenticationToken = localStorage.getItem("authentication_token");
+	// 	const unitId = localStorage.getItem("unit_id");
 	
-		if (!authenticationToken || !unitId) {
-			window.location.href = "/";
-		}
-	}, []);
+	// 	if (!authenticationToken || !unitId) {
+	// 		window.location.href = "/";
+	// 	}
+	// }, []);
 
 	return (
 		<ThemeProvider theme={darkTheme}>

@@ -8,8 +8,8 @@ import OrdersCreate from "./OrdersCreate";
 
 export default function OrdersList() {
 	const [data, setData] = useState([]);
-	const unitId = localStorage.getItem("unit_id");
-	const authenticationToken = localStorage.getItem("authentication_token");
+	// const unitId = localStorage.getItem("unit_id");
+	// const authenticationToken = localStorage.getItem("authentication_token");
 	const [message, setMessage] = useState("");
 	const [severity, setSeverity] = useState("");
 
@@ -17,9 +17,9 @@ export default function OrdersList() {
 		setMessage("");
 	};
 
-	const headers = {
-		Authorization: `Bearer ${authenticationToken}`
-	};
+	// const headers = {
+	// 	Authorization: `Bearer ${authenticationToken}`
+	// };
 	
 	const sortedData = data.slice().sort((a, b) => {
 		const dateA = new Date(a.delivery_date);
@@ -37,7 +37,7 @@ export default function OrdersList() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get(`${URL}/units/${unitId}/orders/list_orders`, { headers });
+				const response = await axios.get(`${URL}/units/1/orders/list_orders`);
 				setData(response.data);
 			} catch (error) {
 				console.log(error);
@@ -47,7 +47,7 @@ export default function OrdersList() {
 		};
 
 		fetchData();
-	}, [unitId]);
+	}, [1]);
   
 	return (
 		<div className="gap-4 mx-4 mt-2">

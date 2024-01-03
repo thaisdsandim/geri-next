@@ -11,8 +11,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import AlertMessage from "../Alert";
 
 export default function AddItemDialog({ open, onClose, onAddItem }) {
-	const unitId = localStorage.getItem("unit_id");
-	const authenticationToken = localStorage.getItem("authentication_token");
+	// const unitId = localStorage.getItem("unit_id");
+	// const authenticationToken = localStorage.getItem("authentication_token");
 	const [catalog, setCatalog] = useState([]);
 	const [itemCategory, setItemCategory] = useState(null);
 	const [itemType, setItemType] = useState(null);
@@ -25,9 +25,9 @@ export default function AddItemDialog({ open, onClose, onAddItem }) {
 		setMessage("");
 	};
 
-	const headers = {
-		Authorization: `Bearer ${authenticationToken}`
-	};
+	// const headers = {
+	// 	Authorization: `Bearer ${authenticationToken}`
+	// };
 
 	const handleAddItem = () => {
 		if (itemCategory && itemType && itemQuantity) {
@@ -54,7 +54,7 @@ export default function AddItemDialog({ open, onClose, onAddItem }) {
 
 	useEffect(() => {
 		axios
-			.get(`${URL}/units/${unitId}/products`, { headers })
+			.get(`${URL}/units/1/products`)
 			.then((response) => {
 				setCatalog(response.data);
 			})

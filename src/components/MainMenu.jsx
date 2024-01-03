@@ -80,10 +80,10 @@ export default function MainMenu() {
 						<ListItem
 							button
 							onClick={() => {
-								localStorage.removeItem("authentication_token");
-								localStorage.removeItem("email");
-								localStorage.removeItem("name");
-								localStorage.removeItem("unit_id");
+								// localStorage.removeItem("authentication_token");
+								// localStorage.removeItem("email");
+								// localStorage.removeItem("name");
+								// localStorage.removeItem("unit_id");
 							}}
 						>
 							<ListItemIcon>

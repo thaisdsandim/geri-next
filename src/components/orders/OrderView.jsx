@@ -12,8 +12,8 @@ import AlertMessage from "../Alert";
 export default function OrderDetailsDialog({ orderId }) {
 	const [open, setOpen] = useState(false);
 	const [orderData, setOrderData] = useState(null);
-	const unitId = localStorage.getItem("unit_id");
-	const authenticationToken = localStorage.getItem("authentication_token");
+	// const unitId = localStorage.getItem("unit_id");
+	// const authenticationToken = localStorage.getItem("authentication_token");
 	const [message, setMessage] = useState("");
 	const [severity, setSeverity] = useState("");
 
@@ -21,14 +21,14 @@ export default function OrderDetailsDialog({ orderId }) {
 		setMessage("");
 	};
 
-	const headers = {
-		Authorization: `Bearer ${authenticationToken}`
-	};
+	// const headers = {
+	// 	Authorization: `Bearer ${authenticationToken}`
+	// };
 
 	useEffect(() => {
 		if (open) {
 			axios
-				.get(`${URL}/units/${unitId}/orders/${orderId}`, { headers })
+				.get(`${URL}/units/1/orders/${orderId}`)
 				.then((response) => {
 					setOrderData(response.data);
 				})

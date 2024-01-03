@@ -8,8 +8,8 @@ import CatalogCreate from "./CatalogCreate";
 
 export default function CatalogList() {
 	const [data, setData] = useState([]);
-	const unitId = localStorage.getItem("unit_id");
-	const authenticationToken = localStorage.getItem("authentication_token");
+	// const unitId = localStorage.getItem("unit_id");
+	// const authenticationToken = localStorage.getItem("authentication_token");
 	const [message, setMessage] = useState("");
 	const [severity, setSeverity] = useState("");
 	const [searchTerm, setSearchTerm] = useState("");
@@ -18,13 +18,13 @@ export default function CatalogList() {
 		setMessage("");
 	};
 
-	const headers = {
-		Authorization: `Bearer ${authenticationToken}`
-	};
+	// const headers = {
+	// 	Authorization: `Bearer ${authenticationToken}`
+	// };
 
 	useEffect(() => {
 		axios
-			.get(`${URL}/units/${unitId}/products`, { headers })
+			.get(`${URL}/units/1/products`)
 			.then(response => {
 				setData(response.data);
 			})

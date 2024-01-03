@@ -53,7 +53,7 @@ export default function CustomerEdit({ customerId, customerName, customerPhone }
 		}
   
 		axios
-			.put(`${URL}/units/${unitId}/costumers/${customerId}`, updatedCustomer, {headers})
+			.put(`${URL}/units/1/costumers/${customerId}`, updatedCustomer)
 			.then(response => {
 				console.log(response);
 				setMessage("Cliente editado com sucesso!");

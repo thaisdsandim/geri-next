@@ -28,7 +28,7 @@ export default function OrderDetailsDialog({ orderId }) {
 	useEffect(() => {
 		if (open) {
 			axios
-				.get(`${URL}/units/${unitId}/orders/${orderId}`, { headers })
+				.get(`${URL}/units/1/orders/${orderId}`)
 				.then((response) => {
 					setOrderData(response.data);
 				})

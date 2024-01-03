@@ -121,7 +121,7 @@ export default function OrdersCreate() {
 		};
 
 		axios
-			.post(`${URL}/units/${unitId}/orders`, orderData, { headers })
+			.post(`${URL}/units/1/orders`, orderData)
 			.then((response) => {
 				const orderId = response.data.id;
 
@@ -136,7 +136,7 @@ export default function OrdersCreate() {
 					};
 	
 					axios
-						.post(`${URL}/units/${unitId}/orders/${orderId}/items`, itemData, { headers })
+						.post(`${URL}/units/1/orders/${orderId}/items`, itemData)
 						.then((itemResponse) => {
 						})
 						.catch((itemError) => {

@@ -37,7 +37,7 @@ export default function OrdersList() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get(`${URL}/units/${unitId}/orders/list_orders`, { headers });
+				const response = await axios.get(`${URL}/units/1/orders/list_orders`);
 				setData(response.data);
 			} catch (error) {
 				console.log(error);

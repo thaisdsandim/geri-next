@@ -65,7 +65,7 @@ export default function ClientsCreate() {
 		}
 
 		axios
-			.post(`${URL}/units/${unitId}/costumers`, newCustomer, { headers })
+			.post(`${URL}/units/1/costumers`, newCustomer)
 			.then(response => {
 				console.log(response);
 				setMessage("Cadastro efetuado com sucesso!");

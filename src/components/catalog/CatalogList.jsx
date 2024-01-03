@@ -24,7 +24,7 @@ export default function CatalogList() {
 
 	useEffect(() => {
 		axios
-			.get(`${URL}/units/${unitId}/products`, { headers })
+			.get(`${URL}/units/1/products`)
 			.then(response => {
 				setData(response.data);
 			})

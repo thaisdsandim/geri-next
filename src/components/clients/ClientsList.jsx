@@ -28,7 +28,7 @@ export default function ClientsList() {
 
 	useEffect(() => {
 		axios
-			.get(`${URL}/units/${unitId}/costumers`, { headers })
+			.get(`${URL}/units/1/costumers`)
 			.then((response) => {
 				setCustomers(response.data);
 			})

@@ -63,7 +63,7 @@ export default function CatalogCreate() {
 		}
 
 		axios
-			.post(`${URL}/units/${unitId}/products`, newProduct, { headers })
+			.post(`${URL}/units/1/products`, newProduct)
 			.then((response) => {
 				console.log(response);
 				setMessage("Cadastro efetuado com sucesso!");

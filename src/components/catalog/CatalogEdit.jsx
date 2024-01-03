@@ -53,7 +53,7 @@ export default function CatalogEdit({ itemId, itemCategory, itemFlavour, itemVal
 		}
 
 		axios
-			.put(`${URL}/units/${unitId}/products/${itemId}`, updatedProduct, { headers })
+			.put(`${URL}/units/1/products/${itemId}`, updatedProduct)
 			.then((response) => {
 				console.log(response);
 				setOpen(false);

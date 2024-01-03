@@ -54,7 +54,7 @@ export default function AddItemDialog({ open, onClose, onAddItem }) {
 
 	useEffect(() => {
 		axios
-			.get(`${URL}/units/${unitId}/products`, { headers })
+			.get(`${URL}/units/1/products`)
 			.then((response) => {
 				setCatalog(response.data);
 			})

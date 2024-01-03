@@ -148,6 +148,7 @@ export default function OrdersCreate() {
 				setSeverity("success");
 				resetForm();
 				setOpen(false);
+				window.location.reload();
 			})
 			.catch((error) => {
 				setMessage("Erro ao criar o pedido!");

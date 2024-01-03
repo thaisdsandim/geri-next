@@ -23,8 +23,8 @@ export default function CatalogCreate() {
 	const [flavour, setFlavour] = useState("");
 	const [formattedValue, setFormattedValue] = useState("");
 	const [realValue, setRealValue] = useState("");
-	const unitId = localStorage.getItem("unit_id");
-	const authenticationToken = localStorage.getItem("authentication_token");
+	// const unitId = localStorage.getItem("unit_id");
+	// const authenticationToken = localStorage.getItem("authentication_token");
 	const [message, setMessage] = useState("");
 	const [severity, setSeverity] = useState("");
 
@@ -32,16 +32,16 @@ export default function CatalogCreate() {
 		setMessage("");
 	};
 
-	const headers = {
-		Authorization: `Bearer ${authenticationToken}`,
-	};
+	// const headers = {
+	// 	Authorization: `Bearer ${authenticationToken}`,
+	// };
 
 	const handleSave = () => {
 		const newProduct = {
 			category: category,
 			flavour: flavour,
 			value: realValue,
-			unit_id: unitId,
+			unit_id: 1,
 		};
 
 		if (!category) {

@@ -24,8 +24,8 @@ export default function CatalogEdit({ itemId, itemCategory, itemFlavour, itemVal
 	const [flavour, setFlavour] = useState(itemFlavour);
 	const [formattedValue, setFormattedValue] = useState(`R$ ${itemValue.toFixed(2)}`);
 	const [realValue, setRealValue] = useState(itemValue);
-	const unitId = localStorage.getItem("unit_id");
-	const authenticationToken = localStorage.getItem("authentication_token");
+	// const unitId = localStorage.getItem("unit_id");
+	// const authenticationToken = localStorage.getItem("authentication_token");
 	const [message, setMessage] = useState("");
 	const [severity, setSeverity] = useState("");
 
@@ -33,9 +33,9 @@ export default function CatalogEdit({ itemId, itemCategory, itemFlavour, itemVal
 		setMessage("");
 	};
 
-	const headers = {
-		Authorization: `Bearer ${authenticationToken}`,
-	};
+	// const headers = {
+	// 	Authorization: `Bearer ${authenticationToken}`,
+	// };
 
 	const handleSave = () => {
 		const updatedProduct = {};

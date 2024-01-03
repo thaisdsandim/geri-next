@@ -16,8 +16,8 @@ export default function ClientsCreate() {
 	const [name, setName] = useState("");
 	const [phone, setPhone] = useState("");
 	const [formattedPhone, setFormattedPhone] = useState("");
-	const unitId = localStorage.getItem("unit_id");
-	const authenticationToken = localStorage.getItem("authentication_token");
+	// const unitId = localStorage.getItem("unit_id");
+	// const authenticationToken = localStorage.getItem("authentication_token");
 	const [message, setMessage] = useState("");
 	const [severity, setSeverity] = useState("");
 
@@ -25,9 +25,9 @@ export default function ClientsCreate() {
 		setMessage("");
 	};
 
-	const headers = {
-		Authorization: `Bearer ${authenticationToken}`
-	};
+	// const headers = {
+	// 	Authorization: `Bearer ${authenticationToken}`
+	// };
 
 	const handlePhoneChange = (e) => {
 		const rawPhone = e.target.value;
@@ -43,7 +43,7 @@ export default function ClientsCreate() {
 		const newCustomer = {
 			name: name,
 			phone: formattedPhone,
-			unit_id: unitId
+			unit_id: 1
 		};
 
 		if (!name) {

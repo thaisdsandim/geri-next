@@ -26,8 +26,8 @@ export default function OrdersCreate() {
 	const [orderAmount, setOrderAmount] = useState(0);
 	const [addItemDialogOpen, setAddItemDialogOpen] = useState(false);
 	const [orderItems, setOrderItems] = useState([]);
-	const unitId = localStorage.getItem("unit_id");
-	const authenticationToken = localStorage.getItem("authentication_token");
+	// const unitId = localStorage.getItem("unit_id");
+	// const authenticationToken = localStorage.getItem("authentication_token");
 	const [message, setMessage] = useState("");
 	const [severity, setSeverity] = useState("");
 
@@ -35,9 +35,9 @@ export default function OrdersCreate() {
 		setMessage("");
 	};
 
-	const headers = {
-		Authorization: `Bearer ${authenticationToken}`,
-	};
+	// const headers = {
+	// 	Authorization: `Bearer ${authenticationToken}`,
+	// };
 
 	const resetForm = () => {
 		setSelectedCustomer(null);
@@ -82,7 +82,7 @@ export default function OrdersCreate() {
 
 	useEffect(() => {
 		axios
-			.get(`${URL}/units/${unitId}/costumers`, { headers })
+			.get(`${URL}/units/1/costumers`)
 			.then((response) => {
 				setCustomers(response.data);
 			})
@@ -117,7 +117,7 @@ export default function OrdersCreate() {
 			delivery_place: deliveryPlace,
 			amount: orderAmount,
 			costumer_id: selectedCustomer.id,
-			unit_id: unitId,
+			unit_id: 1,
 		};
 
 		axios

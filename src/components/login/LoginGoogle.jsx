@@ -44,10 +44,10 @@ export default function LoginGoogle() {
 									setMessage(data.error);
 									setSeverity("error");
 								} else {
-									localStorage.setItem("authentication_token", data.authentication_token);
-									localStorage.setItem("email", data.email);
-									localStorage.setItem("name", data.name);
-									localStorage.setItem("unit_id", data.unit_id);
+									// localStorage.setItem("authentication_token", data.authentication_token);
+									// localStorage.setItem("email", data.email);
+									// localStorage.setItem("name", data.name);
+									// localStorage.setItem("unit_id", data.unit_id);
 									handleSuccessfulLogin();
 								}
 							})
